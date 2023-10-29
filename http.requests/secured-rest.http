@@ -1,0 +1,14 @@
+### Защищеный
+GET http://localhost:8081
+
+### Незащищенный
+GET http://localhost:8081/unauthenticated
+
+###
+http://localhost:8081/oauth2/authorization/external
+
+### Разлогин
+POST http://localhost:8081/logout
+
+### Разлогин
+GET http://localhost:8081/logout

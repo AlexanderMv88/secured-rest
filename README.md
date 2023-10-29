@@ -1,11 +1,14 @@
 
 # Secured-rest
 ## Цель: 
-Выполнить аутентификацию с помощью Keycloak (+ Spring security + webflux)
+Выполнить упражнение по аутентификации с помощью Keycloak (+ Spring security + webflux)
 
 Использовал 
 
-статью: https://developers.redhat.com/articles/2023/07/24/how-integrate-spring-boot-3-spring-security-and-keycloak#install_keycloak
+статьи: 
+https://developers.redhat.com/articles/2023/07/24/how-integrate-spring-boot-3-spring-security-and-keycloak#install_keycloak
+https://ldduy1006.medium.com/spring-webflux-security-configuration-28ac86423a42
+https://docs.spring.io/spring-security/reference/6.2-SNAPSHOT/reactive/oauth2/login/logout.html
 
 Код: https://github.com/edwin/spring-3-keycloak/tree/master
 
@@ -51,13 +54,23 @@ spring.security.oauth2.client.registration.external.client-secret=ваш_secret
    В созданом пользователе во вкладке Role Mappings добавить все роли (думаю что нет нужды добавлять всех, но в этом нужно было разбираться)
 
 Запускаю приложение.
-Открываю в браузере:
+Открываю в браузере
+Незащищенный эндпоинт:
 ```
-http://localhost:8081/
+http://localhost:8081/unauthenticated
+```
+Защищенный эндпоинт:
+```
+http://localhost:8081
 ```
 Ввожу имя пользователя и пароль и вижу свои данные
+Чтобы выйти из учетки нужно выполнить:
+```
+http://localhost:8081/logout
+```
+Если пройти на защищенный эндпоинт, то опять запросит пароль
 
-TODO: починить http://localhost:8081/unauthenticated эта ручка не должна вести на аутентификацию, а ведет
 
+//TODO: удалить диалог подтверждения logout
 
 
