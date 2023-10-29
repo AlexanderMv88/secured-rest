@@ -3,6 +3,7 @@ package org.securedrest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.securedrest.MyController.UserData;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
 import org.springframework.security.core.context.SecurityContext;
@@ -23,10 +24,6 @@ public class MyController {
         this.objectMapper = objectMapper;
     }
 
-    public record Resp(String name, String email) {
-
-    }
-
     public record UserData(String firstName, String secondName, String email) {
 
     }
@@ -36,7 +33,6 @@ public class MyController {
         Mono<UserData> map = getUserDataMono();
         return map;
     }
-
 
     @GetMapping(path = "/unauthenticated")
     public Mono<UserData> unauthenticatedRequests() {
